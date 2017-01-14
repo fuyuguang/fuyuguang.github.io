@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>常用 git 命令 | 你的成功，取决于你帮助了多少人</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工作区（Working Directory）就是你在电脑里能看到的目录。
+ 版本库（Repository）:工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+ 暂存区（stage或者叫index）:  版本库中的一块特殊区域 ， HEAD ： 当前版本的指针
+ 把文件加入到版本库的执行方法：第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；第二步是用git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用 git 命令">
+<meta property="og:url" content="http://fuyuguang.github.io/2017/01/11/常用-git-命令/index.html">
+<meta property="og:site_name" content="你的成功，取决于你帮助了多少人">
+<meta property="og:description" content="工作区（Working Directory）就是你在电脑里能看到的目录。
+ 版本库（Repository）:工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+ 暂存区（stage或者叫index）:  版本库中的一块特殊区域 ， HEAD ： 当前版本的指针
+ 把文件加入到版本库的执行方法：第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；第二步是用git">
+<meta property="og:updated_time" content="2017-01-11T16:21:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用 git 命令">
+<meta name="twitter:description" content="工作区（Working Directory）就是你在电脑里能看到的目录。
+ 版本库（Repository）:工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+ 暂存区（stage或者叫index）:  版本库中的一块特殊区域 ， HEAD ： 当前版本的指针
+ 把文件加入到版本库的执行方法：第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；第二步是用git">
+  
+    <link rel="alternate" href="/atom.xml" title="你的成功，取决于你帮助了多少人" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">你的成功，取决于你帮助了多少人</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://fuyuguang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-常用-git-命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/11/常用-git-命令/" class="article-date">
+  <time datetime="2017-01-11T04:53:54.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用 git 命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>工作区（Working Directory）就是你在电脑里能看到的目录。</p>
+<p> 版本库（Repository）:工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
+<p> 暂存区（stage或者叫index）:  版本库中的一块特殊区域 ，<br> HEAD ： 当前版本的指针</p>
+<p> 把文件加入到版本库的执行方法：<br>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；<br>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p>git diff命令详解</p>
+<p>a、查看尚未暂存的文件更新了哪些部分，不加参数直接输入</p>
+<p> git diff<br>此命令比较的是工作目录(Working tree)和暂存区域快照(index)之间的差异<br>也就是修改之后还没有暂存起来的变化内容。</p>
+<p>b、查看已经暂存起来的文件(staged)和上次提交时的快照之间(HEAD)的差异<br>    git diff –cached<br>    git diff –staged<br>显示的是下一次commit时会提交到HEAD的内容(不带-a情况下)</p>
+<p>c、显示工作版本(Working tree)和HEAD的差别<br>    git diff HEAD</p>
+<p>d、直接将两个分支上最新的提交做diff<br>    git diff topic master 或 git diff topic..master</p>
+<p>f、查看简单的diff结果，可以加上–stat参数<br>    git diff –stat</p>
+<p>g、查看当前目录和另外一个分支的差别   ，显示当前目录和另一个叫’test’分支的差别<br>    git diff test</p>
+<p>git diff HEAD – ./lib<br>显示当前目录下的lib目录和上次提交之间的差别（更准确的说是在当前分支下）</p>
+<p>h、比较上次提交commit和上上次提交<br>    git diff HEAD^ HEAD</p>
+<p>i、比较两个历史版本之间的差异<br>    git diff SHA1 SHA2</p>
+<p>撤销修改</p>
+<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
+<p>git checkout – ./app/src/main/java/com/jiayou/fyg/hellolibrary/MainActivity.java</p>
+<p>git checkout .    //丢弃工作区的所有修改</p>
+<p>###往本地提交两个版本，然后撤销掉本地的两次提交<br>git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
+<p>git reset head  – ./app/src/main/java/com/jiayou/fyg/hellolibrary/MainActivity.java     //丢弃暂存区的指定文件<br>git reset head  //丢弃暂存区的所有修改</p>
+<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
+<p>场景3：已经提交了不合适的修改到本地版本库时（不能推送到远端，推送到远端需要revert），想要撤销本次提交，用 git reset HEAD^<br>会把内容 回滚到 工作区 ！！！</p>
+<p>删除文件 ：<br>一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：</p>
+<p>git show dc37c47</p>
+<p>git status</p>
+<p>如果我们某次修改了某些内容，并且已经commit到本地仓库，而且已经push到远程仓库了<br>这种情况下，我们想把本地和远程仓库都回退到某个版本，该怎么做呢？<br>前面讲到的git reset只是在本地仓库中回退版本，而远程仓库的版本不会变化<br>这样，即时本地reset了，但如果再git pull，那么，远程仓库的内容又会和本地之前版本的内容进行merge 这并不是我们想要的东西，这时可以有2种办法来解决这个问题：</p>
+<p>1：直接在远程server的仓库目录下，执行git reset –soft 10efa来回退。注意：在远程不能使用mixed或hard参数<br>2：在本地直接把远程的master分支给删除，然后再把reset后的分支内容给push上去，如下：</p>
+<p>人和电脑一样，会遇到中断，需要保存现在的上下文转而去处理其他更紧急的事情。我们在使用git的时候也会遇到这样的情况。当在需要紧急处理一个bug时，工作区内容又没有完成，不适合提交，想暂存起来。</p>
+<p>git stash  对当前的暂存区和工作区状态进行保存。 </p>
+<p>git stash list  列出所有保存的进度列表。</p>
+<p>git stash pop [–index] [<stash>] 恢复工作进度</stash></p>
+<p>// 显示已暂存列表</p>
+<h1 id="git-stash-list"><a href="#git-stash-list" class="headerlink" title="git stash list"></a>git stash list</h1><p>stash@{0}: WIP on master: 440e976 init</p>
+<p>// 恢复暂存区和工作区进度</p>
+<h1 id="git-stash-pop-–index-stash-0"><a href="#git-stash-pop-–index-stash-0" class="headerlink" title="git stash pop –index stash@{0}"></a>git stash pop –index stash@{0}</h1><p>git status<br>     查询repo的状态.<br>     git status -s: -s表示short, -s的输出标记会有两列,第一列是对staging区域而言,第二列是对working目录而言.</p>
+<p>git status -s<br>MM app/src/main/java/com/jiayou/fyg/hellolibrary/MainActivity.java</p>
+<p>git log –pretty=raw –graph commitId</p>
+<p>git reflog show master</p>
+<p>git mergetool.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://fuyuguang.github.io/2017/01/11/常用-git-命令/" data-id="cixtxcu4v0002czri84314e78" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/12/百分点推荐接口/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          百分点推荐接口统计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/21/new_day/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">新的一天</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/12/百分点推荐接口/">百分点推荐接口统计</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/11/常用-git-命令/">常用 git 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/21/new_day/">新的一天</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/26/目前_统计帧率的工具有以下几种：/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 付玉光<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
